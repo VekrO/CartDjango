@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Página de Carrinho
+{% endblock title %}
+{% block content %}
+
+<main class="container-fluid">
+    <section class="row">
+        <div class="col-12 p-1">
+            <div class="card-group card-list">
+                {% for product in products %}
+                <div class="card card-product">
+
+                    <img src="{{ product.product.image.url }}" alt="" class="card-img-top mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ product.product.name }}
+                        </h5>
+
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="number" class="form-control mb-2" min="1" value="1" max="{{ product.product.quantity}}">
+                        </form>
+                        <form action="{% url 'cart-remove' product.product.pk %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ product.product.pk }}" name="cart_id_excluir">
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}

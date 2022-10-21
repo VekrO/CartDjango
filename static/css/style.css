@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+*{
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cart-item #cart{
+    font-size: 2rem;
+    position: relative;
+}
+
+.cart-item .dot{
+    line-height: 18px;
+    width: 18px;
+    height: 18px;
+    background-color: crimson;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+#product-image input[type="file"]{
+    display: none;
+}
+
+.logo{
+    font-size: 5rem;
+}
+
+/* Cards */
+.card-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+.card-list .card-product{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.card-list .card-product img{
+    width: 125px;
+    height: 200px;
+}
+.card-list .card-product .card-product-title{
+    font-size: 15px;
+    padding: 5px;
+    bottom: 0;
+}
+
+@media (max-width: 960px){
+    .card-list{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px){
+    .card-list{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

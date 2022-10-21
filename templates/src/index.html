@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Página Inicial
+{% endblock title %}
+{% block content %}
+
+<main class="container-fluid">
+    <section class="row">
+        <div class="col-12 p-1">
+            <div class="card-list">
+            {% for product in products %}
+                <div class="card-product">
+                    <img src="{{ product.image.url }}" alt="" class="card-img-top mb-2">
+                    <h5 class="card-product-title">
+                        {{ product.name }}
+                    </h5>
+                    <p class="text-start text-primary fw-bold">
+                        R$ {{ product.price }}
+                    </p>
+                    <div class="w-100 p-1 d-flex flex-column gap-1">
+                        {% csrf_token %}
+                        <a href="" class="btn btn-success btn-md">Comprar</a>
+                        <form action="" method="POST" class="formCartAdd">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ product.pk }}" name="product_id">
+                            <button type="submit" class="btn btn-info btn-md w-100 btn-add-cart">Adicionar ao Carrinho</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/cart.js' %}"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous">
+</script>
+{% endblock script %}
+

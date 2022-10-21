@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Página para Cadastro de Produto
+{% endblock title %}
+{% block content %}
+<main class="container-fluid">
+    <section class="row">
+        <div class="col-8 mx-auto">
+            <form action="" method="POST" enctype="multipart/form-data" class="py-5">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} product-success">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% csrf_token %}
+                <h1>Cadastre um Produto</h1>
+                <hr>
+                <div class="form-group mb-2">
+                    <label for="name">Nome do Produto</label>
+                    <input type="text" name="name" id="name" class="form-control">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="price">Preço</label>
+                    <input type="text" name="price" id="price" class="form-control">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="quantity">Quantidade</label>
+                    <input type="number" name="quantity" id="quantity" class="form-control">
+                </div>
+                <div class="form-group mb-2 w-100" id="product-image">
+                    <label for="image" id="label-image">
+                        <i class="fa-sharp fa-solid fa-image logo"></i>
+                        <input type="file" name="image" id="image" class="">
+                    </label>
+                    <img src="" class="image card-img-top" alt="" style="max-width: 100px;">
+                </div>
+                <div class="form-group mb-2 d-flex gap-1">
+                    <button type="submit" class="btn btn md btn-success w-75">Salvar</button>
+                    <button type="reset" class="btn btn md btn-danger w-25">Limpar</button>
+                </div>
+                <div class="form-feedback alert alert-warning">
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/product-create.js' %}"></script>
+{% endblock script %}
